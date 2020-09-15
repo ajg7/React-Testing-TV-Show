@@ -3,9 +3,8 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../App";
 import { fetchShow as mockFetchShow } from "../api/fetchShow";
-import { act } from "react-dom/test-utils";
 
-jest.mock("../api/fetchShow");    
+jest.mock("../api/fetchShow"); 
 
 const episodeData = [{
     "id": 2993,
@@ -606,7 +605,6 @@ const episodeData = [{
     }
 }]
 
-
-test("render without errors", () => {
-    
+test("It can make an api call", () => {
+    mockFetchShow.mockResolvedValue(episodeData);
 })
