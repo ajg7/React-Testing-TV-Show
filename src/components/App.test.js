@@ -1,7 +1,11 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/react";
-import Episodes from "./Episodes";
+import userEvent from "@testing-library/user-event";
+import App from "../App";
+import { fetchShow as mockFetchShow } from "../api/fetchShow";
+import { act } from "react-dom/test-utils";
+
+jest.mock("../api/fetchShow");    
 
 const episodeData = [{
     "id": 2993,
@@ -602,15 +606,7 @@ const episodeData = [{
     }
 }]
 
-test("Renders without errors", () => {
-    render(<Episodes episodes={[]} />);
-});
 
-test("Rerenders with new props", () => {
-    const { rerender, getAllByTestId } = render(<Episodes episodes={[]} />);
-
-    rerender(<Episodes episodes={episodeData} />)
-
-    const episodeList = screen.getAllByTestId(/episodes/i);
-    expect(episodeList).toHaveLength(episodeData.length);
+test("render without errors", () => {
+    
 })
